@@ -7,37 +7,37 @@ import (
 )
 
 func main() {
-	reader := bufio.NewReader(os.Stdin)
-	writer := bufio.NewWriter(os.Stdout)
-	defer writer.Flush()
+	r := bufio.NewReader(os.Stdin)
+	w := bufio.NewWriter(os.Stdout)
+	defer w.Flush()
 
 	var n int
-	fmt.Fscanln(reader, &n)
+	fmt.Fscanln(r, &n)
 
 	var cards = map[int]int{}
 	for i := 0; i < n; i++ {
 		var input int
 		if i == n-1 {
-			fmt.Fscanln(reader, &input)
+			fmt.Fscanln(r, &input)
 		} else {
-			fmt.Fscan(reader, &input)
+			fmt.Fscan(r, &input)
 		}
 		cards[input]++
 	}
 
 	var m int
-	fmt.Fscanln(reader, &m)
+	fmt.Fscanln(r, &m)
 
 	for i := 0; i < m; i++ {
 		var num int
-		fmt.Fscanf(reader, "%d ", &num)
-		fmt.Fprintf(writer, "%s ", hasCard(cards, num))
+		fmt.Fscan(r, &num)
+		fmt.Fprintf(w, "%d ", hasCard(cards, num))
 	}
 }
 
-func hasCard(cards map[int]int, num int) string {
+func hasCard(cards map[int]int, num int) int {
 	if cards[num] != 0 {
-		return "1"
+		return 1
 	}
-	return "0"
+	return 0
 }
