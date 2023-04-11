@@ -14,11 +14,13 @@ type userInfo struct {
 
 func main() {
 	var n int
+
 	r := bufio.NewReader(os.Stdin)
-	fmt.Fscanln(r, &n)
 	w := bufio.NewWriter(os.Stdout)
+
 	defer w.Flush()
 
+	fmt.Fscanln(r, &n)
 	var users = make([]userInfo, n)
 
 	for i := 0; i < n; i++ {
